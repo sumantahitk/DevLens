@@ -1,0 +1,234 @@
+/* * {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+main .left,
+main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+}
+
+main .left {
+  background-color: #000000;
+  position: relative;
+}
+
+.left .code,
+.code pre,
+.code pre code {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 0.7rem;
+  background-color: #0c0c0c;
+}
+
+main .left .review {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgb(219, 219, 255);
+  color: #000000;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.7rem;
+}
+
+
+main .right {
+  background-color: #5f5f5f;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  overflow: auto;
+} */
+
+
+
+
+
+
+/* ===== Global Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  background: radial-gradient(circle at top left, #0e0e0e, #1b1b1b);
+  color: #eaeaea;
+}
+
+/* ===== Header / Branding ===== */
+header {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #101010, #181818);
+  border-bottom: 1px solid #2b2b2b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #a9a9ff;
+  text-shadow: 0 0 10px rgba(150, 150, 255, 0.5);
+  user-select: none;
+}
+
+/* ===== Layout ===== */
+main {
+  height: calc(100% - 70px);
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ===== Shared Section Styles ===== */
+main .left,
+main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+main .left:hover,
+main .right:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(120, 120, 255, 0.2);
+}
+
+/* ===== Left: Code Editor ===== */
+main .left {
+  background: linear-gradient(160deg, #111, #181818);
+  border: 1px solid #2b2b2b;
+}
+
+.left .code {
+  flex: 1;
+  background-color: #1b1b1b;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-y: auto;
+  color: #e6e6e6;
+  line-height: 1.6;
+  font-size: 1rem;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Syntax Highlighting */
+.code .keyword  { color: #569CD6; }
+.code .string   { color: #CE9178; }
+.code .comment  { color: #6A9955; font-style: italic; }
+.code .number   { color: #B5CEA8; }
+.code .function { color: #DCDCAA; }
+
+/* ===== Review Button ===== */
+main .left .review {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #a9a9ff, #7b7bff);
+  color: #000;
+  padding: 0.6rem 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: 0.7rem;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(150, 150, 255, 0.3);
+}
+
+main .left .review:hover {
+  background: linear-gradient(135deg, #8d8dff, #5a5aff);
+  box-shadow: 0 0 12px rgba(140, 140, 255, 0.6);
+}
+
+/* ===== Right: AI Review Output ===== */
+main .right {
+  background: linear-gradient(145deg, #242424, #303030);
+  border: 1px solid #3a3a3a;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+/* Right Panel Text Enhancements */
+main .right h2, main .right h3 {
+  color: #ffd966;
+  margin-bottom: 0.6rem;
+}
+
+main .right strong {
+  color: #ffcc66;
+}
+
+main .right code {
+  background-color: #1a1a1a;
+  color: #c586c0;
+  padding: 0.25rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Scrollbar Styling */
+main .right::-webkit-scrollbar,
+main .left .code::-webkit-scrollbar {
+  width: 8px;
+}
+
+main .right::-webkit-scrollbar-thumb,
+main .left .code::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Subtle division between sections */
+main .left {
+  background: linear-gradient(160deg, #111111, #1a1a1a);
+}
+main .right {
+  background: linear-gradient(145deg, #232323, #2f2f2f);
+}
+
+/* Optional glow for headings */
+main .right h2 {
+  text-shadow: 0 0 10px rgba(255, 217, 102, 0.4);
+}
